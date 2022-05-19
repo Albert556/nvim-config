@@ -16,13 +16,6 @@ vim.api.nvim_set_keymap("n", "<leader>h=", "<cmd>vertical res +5<cr>", {noremap 
 -- 窗口高度减小
 vim.api.nvim_set_keymap("n", "<leader>h-", "<cmd>vertical res -5<cr>", {noremap = true, silent = true})
 
--- 切换分屏
-vim.keymap.set("n", "<leader>ww", "<C-w>w", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<leader>wh", "<C-w>h", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<leader>wj", "<C-w>j", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<leader>wk", "<C-w>k", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<leader>wl", "<C-w>l", {noremap = true, silent = true})
-
 -- 反撤销
 vim.api.nvim_set_keymap("n", "U", "<C-r>", {noremap = true, silent = true})
 
