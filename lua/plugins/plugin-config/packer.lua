@@ -104,7 +104,7 @@ require("packer").startup(
         )
 
         -- 代码注释
-        use ({'b3nj5m1n/kommentary'})
+        use({"b3nj5m1n/kommentary"})
 
         -- 显示光标所在函数或代码块
         use({"nvim-treesitter/nvim-treesitter-context"})
@@ -119,14 +119,23 @@ require("packer").startup(
         use("sbdchd/neoformat")
 
         -- 快捷操作
+        -- hop
+        use(
+            {
+                "phaazon/hop.nvim",
+                branch = "v1" -- optional but strongly recommended
+            }
+        )
+        -- lightspeed
+        use({"ggandor/lightspeed.nvim"})
         -- vim-surround
         use("tpope/vim-surround")
 
         -- vim-easymotion
-        use("easymotion/vim-easymotion")
+        -- use("easymotion/vim-easymotion")
 
         -- vim-sneak
-        use("justinmk/vim-sneak")
+        -- use("justinmk/vim-sneak")
 
         -- 快速搜索
         -- brew install ripgrep

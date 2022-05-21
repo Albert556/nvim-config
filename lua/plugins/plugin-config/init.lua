@@ -30,6 +30,11 @@ local configFile = {
         enable = true,
         models = {"gitsigns"}
     },
+    -- 加载hop
+    ["plugins/plugin-config/hop"] = {
+        enable = true,
+        models = {"hop"}
+    },
     -- 加载indent-blankline
     ["plugins/plugin-config/indent-blankline"] = {
         enable = true,
@@ -39,6 +44,11 @@ local configFile = {
     ["plugins/plugin-config/kommentary"] = {
         enable = true,
         models = {"kommentary"}
+    },
+    -- 加载lightspeed
+    ["plugins/plugin-config/lightspeed"] = {
+        enable = true,
+        models = {"lightspeed"}
     },
     -- 加载 lsp_signature
     ["plugins/plugin-config/lsp_signature"] = {
