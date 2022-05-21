@@ -12,7 +12,7 @@ local configFile = {
     },
     -- 加载comment
     ["plugins/plugin-config/comment"] = {
-        enable = true,
+        enable = false,
         models = {"ts_context_commentstring", "Comment"}
     },
     -- 加载feline
@@ -34,6 +34,11 @@ local configFile = {
     ["plugins/plugin-config/indent-blankline"] = {
         enable = true,
         models = {"indent_blankline"}
+    },
+    -- 加载kommentary
+    ["plugins/plugin-config/kommentary"] = {
+        enable = true,
+        models = {"kommentary"}
     },
     -- 加载 lsp_signature
     ["plugins/plugin-config/lsp_signature"] = {
@@ -95,7 +100,7 @@ local configFile = {
     -- 加载nvim-treesitter
     ["plugins/plugin-config/nvim-treesitter"] = {
         enable = true,
-        models = {"nvim-treesitter"}
+        models = {"nvim-treesitter", "treesitter-context"}
     },
     -- 加载主题 packer
     ["plugins/plugin-config/packer"] = {

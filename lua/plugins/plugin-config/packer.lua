@@ -26,7 +26,6 @@ require("packer").startup(
                 end
             }
         )
-        use({"arcticicestudio/nord-vim"})
         use(
             {
                 "sonph/onehalf",
@@ -57,16 +56,13 @@ require("packer").startup(
             }
         )
 
-        -- use(
-        --     {
-        --         "Shougo/defx.nvim"
-        --     }
-        -- )
-
         -- 状态栏
-        use ({"feline-nvim/feline.nvim",
-            tag = 'v1.*',
-        })
+        use(
+            {
+                "feline-nvim/feline.nvim",
+                tag = "v1.*"
+            }
+        )
 
         -- outline
         use("simrat39/symbols-outline.nvim")
@@ -80,10 +76,12 @@ require("packer").startup(
         )
 
         -- 内置终端
-        use({
-            "akinsho/toggleterm.nvim",
-            tag = 'v1.*',
-        })
+        use(
+            {
+                "akinsho/toggleterm.nvim",
+                tag = "v1.*"
+            }
+        )
 
         -- 缩进
         use("lukas-reineke/indent-blankline.nvim")
@@ -99,20 +97,17 @@ require("packer").startup(
                 requires = {
                     "p00f/nvim-ts-rainbow", -- 彩虹括号
                     "andymass/vim-matchup",
-                    "nvim-treesitter/nvim-treesitter-textobjects"
+                    "nvim-treesitter/nvim-treesitter-textobjects",
+                    "JoosepAlviste/nvim-ts-context-commentstring"
                 }
             }
         )
 
         -- 代码注释
-        use(
-            {
-                "numToStr/Comment.nvim",
-                requires = {
-                    "JoosepAlviste/nvim-ts-context-commentstring"
-                }
-            }
-        )
+        use ({'b3nj5m1n/kommentary'})
+
+        -- 显示光标所在函数或代码块
+        use({"nvim-treesitter/nvim-treesitter-context"})
 
         use({"mg979/vim-visual-multi"})
 
