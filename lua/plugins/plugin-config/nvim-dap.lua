@@ -130,3 +130,40 @@ dap_virtual_text.setup(
         -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
     }
 )
+
+-- keymap
+-- dapUI 显示或隐藏调试界面
+vim.keymap.set("n", "<F3>", "<cmd>lua require'dapui'.toggle()<CR>", {noremap = true, silent = true})
+
+-- 打断点
+vim.keymap.set(
+    "n",
+    "<leader>db",
+    "<cmd>lua require'dap'.toggle_breakpoint()<cr>",
+    {noremap = true, silent = true}
+)
+-- 设置断点条件
+vim.keymap.set(
+    "n",
+    "<leader>dB",
+    "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>",
+    {noremap = true, silent = true}
+)
+vim.keymap.set("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", {noremap = true, silent = true})
+-- 重启调试
+vim.keymap.set("n", "<leader>dl", "lua require'dap'.run_last()<cr>", {noremap = true, silent = true})
+-- 开启调试或到下一个断点处
+vim.keymap.set("n", "<F5>", "<cmd>lua require'dap'.continue()<CR>", {noremap = true, silent = true})
+-- 单步跳过执行（不进入函数内部，无回溯阶段）
+vim.keymap.set("n", "<F10>", "<cmd>lua require'dap'.step_over()<CR>", {noremap = true, silent = true})
+-- 单步进入执行（会进入函数内部，有回溯阶段）
+vim.keymap.set("n", "<F11>", "<cmd>lua require'dap'.step_into()<CR>", {noremap = true, silent = true})
+-- 步出当前函数
+vim.keymap.set("n", "<F12>", "<cmd>lua require'dap'.step_out()<CR>", {noremap = true, silent = true})
+-- 退出调试（关闭调试，关闭 repl，关闭 ui，清除内联文本）
+vim.keymap.set(
+    "n",
+    "<F4>",
+    "<cmd>lua require'dap'.terminate()<CR><cmd>lua require'dap.repl'.close()<CR><cmd>lua require'dapui'.close()<CR><cmd>DapVirtualTextForceRefresh<CR>",
+    {noremap = true, silent = true}
+)

@@ -9,3 +9,12 @@ vim.notify.setup({})
 -- 级别有：info、warn、error、debug、trace
 -- 示例：
 -- vim.notify("hello world", "info", {title = "info"})
+
+-- keymap
+-- 显示历史弹窗记录
+vim.keymap.set(
+    "n",
+    "<leader>nh",
+    "<cmd>lua require('telescope').extensions.notify.notify()<CR>",
+    {noremap = true, silent = true}
+)

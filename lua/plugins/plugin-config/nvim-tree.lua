@@ -115,3 +115,8 @@ nvim_tree.setup {
         }
     }
 }
+
+-- keymap
+vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>tf", ":NvimTreeFindFile<CR>", {noremap = true, silent = true})
+

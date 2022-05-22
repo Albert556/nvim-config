@@ -11,6 +11,82 @@ lsp_installer.settings(
         }
     }
 )
+
+-- keymap
+function on_attach(client, bufnr)
+    -- Use an on_attach function to only map the following keys
+    -- after the language server attaches to the current buffer
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    -- 跳转到定义（代替内置 LSP 的窗口，telescope 插件让跳转定义更方便）
+    vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", {noremap = true, silent = true, buffer = bufnr})
+    -- 跳转到实现
+    vim.keymap.set(
+        "n",
+        "gD",
+        "<cmd>lua vim.lsp.buf.declaration()<CR>",
+        {noremap = true, silent = true, buffer = bufnr}
+    )
+    -- 跳转到实现（代替内置 LSP 的窗口，telescope 插件让跳转定义更方便）
+    vim.keymap.set(
+        "n",
+        "gi",
+        "<cmd>Telescope lsp_implementations<CR>",
+        {noremap = true, silent = true, buffer = bufnr}
+    )
+    -- 跳转到type定义（代替内置 LSP 的窗口，telescope 插件让跳转定义更方便）
+    vim.keymap.set(
+        "n",
+        "gt",
+        "<cmd>Telescope lsp_type_definitions<CR>",
+        {noremap = true, silent = true, buffer = bufnr}
+    )
+    -- 列出光标下所有引用（代替内置 LSP 的窗口，telescope 插件让查看引用更方便）
+    vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", {noremap = true, silent = true, buffer = bufnr})
+    -- 工作区诊断（代替内置 LSP 的窗口，telescope 插件让工作区诊断更方便）
+    vim.keymap.set(
+        "n",
+        "<leader>wd",
+        "<cmd>Telescope diagnostics<CR>",
+        {noremap = true, silent = true, buffer = bufnr}
+    )
+    -- 显示代码可用操作（代替内置 LSP 的窗口，telescope 插件让代码行为更方便）
+    vim.keymap.set(
+        "n",
+        "<leader>ca",
+        "<cmd>Telescope lsp_code_actions<CR>",
+        {noremap = true, silent = true, buffer = bufnr}
+    )
+    -- 变量重命名（代替内置 LSP 的窗口，Lspsaga 让变量重命名更美观）
+    vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", {noremap = true, silent = true, buffer = bufnr})
+    -- 查看帮助信息（代替内置 LSP 的窗口，Lspsaga 让查看帮助信息更美观）
+    vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<CR>", {noremap = true, silent = true, buffer = bufnr})
+    -- 跳转到上一个问题（代替内置 LSP 的窗口，Lspsaga 让跳转问题更美观）
+    vim.keymap.set(
+        "n",
+        "[d",
+        "<cmd>Lspsaga diagnostic_jump_prev<CR>",
+        {noremap = true, silent = true, buffer = bufnr}
+    )
+    -- 跳转到下一个问题（代替内置 LSP 的窗口，Lspsaga 让跳转问题更美观）
+    vim.keymap.set(
+        "n",
+        "]d",
+        "<cmd>Lspsaga diagnostic_jump_next<CR>",
+        {noremap = true, silent = true, buffer = bufnr}
+    )
+    --
+    vim.keymap.set(
+        "n",
+        "<leader>sd",
+        "<cmd>lua vim.diagnostic.setloclist()<CR>",
+        {noremap = true, silent = true, buffer = bufnr}
+    )
+
+    require "lsp_signature".on_attach() -- Note: add in lsp client on-attach
+end
+
 -- 使用 cmp_nvim_lsp 代替内置 omnifunc，获得更强的补全体验
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
@@ -53,7 +129,7 @@ lsp_installer.on_server_ready(
         if opts == nil then
             return
         end
-        opts.on_attach = _G.on_attach
+        opts.on_attach = on_attach
         opts.flags = {
             debounce_text_changes = 150
         }

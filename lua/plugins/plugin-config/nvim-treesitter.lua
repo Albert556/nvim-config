@@ -55,7 +55,7 @@ treesitter.setup(
                 svelte = "<!-- %s -->",
                 vue = "<!-- %s -->",
                 json = "",
-                lua = { __default = '-- %s' , __multiline = '[[ %s ]]'} 
+                lua = { __default = '-- %s' , __multiline = '[[ %s ]]'}
             }
         },
         -- 启用增量选择

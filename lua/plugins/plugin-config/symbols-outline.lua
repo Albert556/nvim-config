@@ -51,3 +51,6 @@ vim.g.symbols_outline = {
         TypeParameter = {icon = "𝙏", hl = "TSParameter"}
     }
 }
+
+-- keymap
+vim.keymap.set("n", "<leader>o", ":SymbolsOutline<CR>", {noremap = true, silent = true})

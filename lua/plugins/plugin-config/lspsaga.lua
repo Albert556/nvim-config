@@ -32,3 +32,8 @@ lspsaga.setup(
         }
     }
 )
+
+-- keymap
+-- 显示报错
+vim.keymap.set("n", "<leader>ld", ":Lspsaga show_line_diagnostics<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>cd", ":Lspsaga show_cursor_diagnostics<CR>", {noremap = true, silent = true})

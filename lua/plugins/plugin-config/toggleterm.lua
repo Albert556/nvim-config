@@ -55,4 +55,14 @@ toggleterm.setup(
     }
 )
 
+-- keymap
+function _G.set_terminal_keymaps()
+    vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], {noremap = true, silent = true, buffer = 0})
+    vim.keymap.set("t", "jj", [[<C-\><C-n>]], {noremap = true, silent = true, buffer = 0})
+    vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-W>h]], {noremap = true, silent = true, buffer = 0})
+    vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-W>j]], {noremap = true, silent = true, buffer = 0})
+    vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-W>k]], {noremap = true, silent = true, buffer = 0})
+    vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-W>l]], {noremap = true, silent = true, buffer = 0})
+end
+
 vim.cmd([[ autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps() ]])

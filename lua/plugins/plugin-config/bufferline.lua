@@ -18,3 +18,11 @@ bufferline.setup(
         }
     }
 )
+
+-- keymap
+vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>bp", "<cmd>BufferLinePick<cr>", {silent = true, nowait = true})
+vim.keymap.set("n", "<leader>bc", "<cmd>BufferLinePickClose<cr>", {silent = true, nowait = true})
+-- 选择跳转buffer
+vim.keymap.set("n", "<leader>bd", "<cmd>bdelete!<cr>", {silent = true, nowait = true})
