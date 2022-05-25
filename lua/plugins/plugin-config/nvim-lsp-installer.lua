@@ -55,13 +55,14 @@ function on_attach(client, bufnr)
     vim.keymap.set(
         "n",
         "<leader>ca",
-        "<cmd>Telescope lsp_code_actions<CR>",
+        "<cmd>Lspsaga code_action<CR>",
         {noremap = true, silent = true, buffer = bufnr}
     )
     -- 变量重命名（代替内置 LSP 的窗口，Lspsaga 让变量重命名更美观）
     vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", {noremap = true, silent = true, buffer = bufnr})
     -- 查看帮助信息（代替内置 LSP 的窗口，Lspsaga 让查看帮助信息更美观）
     vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<CR>", {noremap = true, silent = true, buffer = bufnr})
+    vim.keymap.set("n", "<leader>lf", "<cmd>Lspsaga lsp_finder<CR>", {noremap = true, silent = true, buffer = bufnr})
     -- 跳转到上一个问题（代替内置 LSP 的窗口，Lspsaga 让跳转问题更美观）
     vim.keymap.set(
         "n",
@@ -79,7 +80,7 @@ function on_attach(client, bufnr)
     --
     vim.keymap.set(
         "n",
-        "<leader>sd",
+        "<leader>ld",
         "<cmd>lua vim.diagnostic.setloclist()<CR>",
         {noremap = true, silent = true, buffer = bufnr}
     )

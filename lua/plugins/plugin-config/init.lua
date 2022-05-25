@@ -130,7 +130,7 @@ local configFile = {
     -- 加载 theme
     ["plugins/plugin-config/theme"] = {
         enable = true,
-        models = {"catppuccin"}
+        models = {}
     },
     -- 加载toggleterm
     ["plugins/plugin-config/toggleterm"] = {

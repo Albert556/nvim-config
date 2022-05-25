@@ -16,23 +16,8 @@ require("packer").startup(
         use("wbthomason/packer.nvim")
 
         -- theme
-        use(
-            {
-                "catppuccin/nvim",
-                -- 改个别名，因为它的名字是 nvim，可能会冲突
-                as = "catppuccin",
-                config = function()
-                    -- 插件加载完成后自动运行 lua/conf/catppuccin.lua 文件中的代码
-                end
-            }
-        )
-        use(
-            {
-                "sonph/onehalf",
-                rtp = "vim"
-            }
-        )
-        use({"rakr/vim-one"})
+        use({'NLKNguyen/papercolor-theme'})
+
         use({"drewtempelmeyer/palenight.vim"})
 
         -- edit
@@ -130,12 +115,6 @@ require("packer").startup(
         use({"ggandor/lightspeed.nvim"})
         -- vim-surround
         use("tpope/vim-surround")
-
-        -- vim-easymotion
-        -- use("easymotion/vim-easymotion")
-
-        -- vim-sneak
-        -- use("justinmk/vim-sneak")
 
         -- 快速搜索
         -- brew install ripgrep
