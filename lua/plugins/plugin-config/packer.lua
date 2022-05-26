@@ -16,7 +16,7 @@ require("packer").startup(
         use("wbthomason/packer.nvim")
 
         -- theme
-        use({'NLKNguyen/papercolor-theme'})
+        use({"NLKNguyen/papercolor-theme"})
 
         -- edit
         -- 编辑器需要的窗口
@@ -95,7 +95,17 @@ require("packer").startup(
         use({"mg979/vim-visual-multi"})
 
         -- AutoSave
-        use("Pocco81/AutoSave.nvim")
+        use(
+            {
+                "Pocco81/AutoSave.nvim",
+                config = function ()
+                    print("hello")
+                    vim.notify("world")
+                    local r = require("plugins/plugin-config/autosave")
+                    print(r)
+                end
+            }
+        )
 
         -- 代码格式化
         -- neoformat
@@ -126,8 +136,8 @@ require("packer").startup(
                     {"nvim-lua/plenary.nvim"},
                     "kyazdani42/nvim-web-devicons",
                     {
-                        'nvim-telescope/telescope-fzf-native.nvim',
-                        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+                        "nvim-telescope/telescope-fzf-native.nvim",
+                        run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
                     },
                     -- telescope-ui
                     "nvim-telescope/telescope-ui-select.nvim",

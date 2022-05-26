@@ -1,5 +1,5 @@
 -- TODO: 增加额外插件的额检查
-local configFile = {
+local configMap = {
     -- 加载autosave
     ["plugins/plugin-config/autosave"] = {
         enable = true,
@@ -149,7 +149,7 @@ local configFile = {
     }
 }
 
-for configFil, configSet in pairs(configFile) do
+for configFile, configSet in pairs(configMap) do
     if configSet.enable == false then goto continue end
     local modelNotOkList = {}
     for _, model in pairs(configSet.models) do
@@ -159,7 +159,7 @@ for configFil, configSet in pairs(configFile) do
         end
     end
     if #modelNotOkList == 0 then
-        require(configFil)
+        require(configFile)
     else
         local str = ""
         for _, m in pairs(modelNotOkList) do
@@ -167,6 +167,5 @@ for configFil, configSet in pairs(configFile) do
         end
         vim.notify(str .. "not found", "warn")
     end
-    
     ::continue::
 end

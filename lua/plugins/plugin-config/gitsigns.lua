@@ -42,5 +42,73 @@ gitsigns.setup {
     yadm = {
         enable = false
     },
-    on_attach = _G.set_gitsigns_keymaps
+    -- keymap
+    on_attach = function(bufnr)
+        -- Navigation
+        vim.keymap.set(
+            "n",
+            "]c",
+            function()
+                if vim.wo.diff then
+                    return "]c"
+                end
+                vim.schedule(
+                    function()
+                        package.loaded.gitsigns.next_hunk()
+                    end
+                )
+                return "<Ignore>"
+            end,
+            {buffer = bufnr, expr = true}
+        )
+
+        vim.keymap.set(
+            "n",
+            "[c",
+            function()
+                if vim.wo.diff then
+                    return "[c"
+                end
+                vim.schedule(
+                    function()
+                        package.loaded.gitsigns.prev_hunk()
+                    end
+                )
+                return "<Ignore>"
+            end,
+            {buffer = bufnr, expr = true}
+        )
+
+        -- Actions
+        vim.keymap.set({"n", "v"}, "<leader>hs", ":Gitsigns stage_hunk<CR>", {buffer = bufnr})
+        vim.keymap.set({"n", "v"}, "<leader>hr", ":Gitsigns reset_hunk<CR>", {buffer = bufnr})
+        vim.keymap.set("n", "<leader>hS", package.loaded.gitsigns.stage_buffer, {buffer = bufnr})
+        vim.keymap.set("n", "<leader>hu", package.loaded.gitsigns.undo_stage_hunk, {buffer = bufnr})
+        vim.keymap.set("n", "<leader>hR", package.loaded.gitsigns.reset_buffer, {buffer = bufnr})
+        vim.keymap.set("n", "<leader>hp", package.loaded.gitsigns.preview_hunk, {buffer = bufnr})
+        vim.keymap.set(
+            "n",
+            "<leader>hb",
+            function()
+                package.loaded.gitsigns.blame_line {full = true}
+            end,
+            {buffer = bufnr}
+        )
+        vim.keymap.set("n", "<leader>tb", package.loaded.gitsigns.toggle_current_line_blame, {buffer = bufnr})
+        vim.keymap.set("n", "<leader>hd", package.loaded.gitsigns.diffthis, {buffer = bufnr})
+        vim.keymap.set(
+            "n",
+            "<leader>hD",
+            function()
+                package.loaded.gitsigns.diffthis("~")
+            end,
+            {
+                buffer = bufnr
+            }
+        )
+        vim.keymap.set("n", "<leader>td", package.loaded.gitsigns.toggle_deleted, {buffer = bufnr})
+
+        -- Text object
+        vim.keymap.set({"o", "x"}, "ih", ":<C-U>Gitsigns select_hunk<CR>", {buffer = bufnr})
+    end
 }
