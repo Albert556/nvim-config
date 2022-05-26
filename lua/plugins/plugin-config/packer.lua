@@ -18,8 +18,6 @@ require("packer").startup(
         -- theme
         use({'NLKNguyen/papercolor-theme'})
 
-        use({"drewtempelmeyer/palenight.vim"})
-
         -- edit
         -- 编辑器需要的窗口
         -- buffer设置
@@ -125,11 +123,11 @@ require("packer").startup(
             {
                 "nvim-telescope/telescope.nvim",
                 requires = {
-                    "nvim-lua/plenary.nvim",
+                    {"nvim-lua/plenary.nvim"},
                     "kyazdani42/nvim-web-devicons",
                     {
-                        "nvim-telescope/telescope-fzf-native.nvim",
-                        run = "make"
+                        'nvim-telescope/telescope-fzf-native.nvim',
+                        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
                     },
                     -- telescope-ui
                     "nvim-telescope/telescope-ui-select.nvim",
