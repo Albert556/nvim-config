@@ -7,7 +7,7 @@ local configMap = {
     },
     -- 加载bufferline配置
     ["plugins/plugin-config/bufferline"] = {
-        enable = true,
+        enable = false,
         models = { "bufferline" }
     },
     -- 加载feline

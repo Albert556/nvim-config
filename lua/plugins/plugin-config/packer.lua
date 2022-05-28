@@ -15,7 +15,12 @@ require("packer").startup(
     use("wbthomason/packer.nvim")
 
     -- theme
-    use({ "NLKNguyen/papercolor-theme" })
+    use({
+        "NLKNguyen/papercolor-theme",
+        config = function()
+            require("plugins.plugin-config.theme")
+        end
+    })
 
     -- edit
     -- 编辑器需要的窗口
@@ -24,7 +29,10 @@ require("packer").startup(
         {
         "akinsho/bufferline.nvim",
         tag = "v2.*",
-        requires = "kyazdani42/nvim-web-devicons"
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("plugins.plugin-config.bufferline")
+        end
     }
     )
 

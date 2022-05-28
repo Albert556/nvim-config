@@ -170,7 +170,28 @@ cmp.setup.cmdline(
 cmp.setup.cmdline(
     ":",
     {
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = cmp.mapping.preset.cmdline({
+        ['<DOWN>'] = {
+            c = function()
+                local cmp = require('cmp')
+                if cmp.visible() then
+                    cmp.select_next_item()
+                else
+                    feedkeys.call(keymap.t('<C-z>'), 'n')
+                end
+            end,
+        },
+        ['<UP>'] = {
+            c = function()
+                local cmp = require('cmp')
+                if cmp.visible() then
+                    cmp.select_prev_item()
+                else
+                    feedkeys.call(keymap.t('<C-z>'), 'n')
+                end
+            end,
+        },
+    }),
     sources = cmp.config.sources(
         {
             {
