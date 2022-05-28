@@ -96,6 +96,9 @@ require("packer").startup(
     -- 代码注释
     use({ "b3nj5m1n/kommentary" })
 
+    -- 代码格式化
+    use({ 'mhartington/formatter.nvim' })
+
     -- 显示光标所在函数或代码块
     use({ "nvim-treesitter/nvim-treesitter-context" })
 

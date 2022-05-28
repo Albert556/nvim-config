@@ -2,12 +2,12 @@
 local configMap = {
     -- 加载autosave
     ["plugins/plugin-config/autosave"] = {
-        enable = false,
+        enable = true,
         models = { "autosave" }
     },
     -- 加载bufferline配置
     ["plugins/plugin-config/bufferline"] = {
-        enable = false,
+        enable = true,
         models = { "bufferline" }
     },
     -- 加载feline
@@ -19,6 +19,11 @@ local configMap = {
     ["plugins/plugin-config/fidget"] = {
         enable = true,
         models = { "fidget" }
+    },
+    -- 加载formatter
+    ["plugins/plugin-config/formatter"] = {
+        enable = false,
+        models = { "formatter" }
     },
     -- 加载gitsigns
     ["plugins/plugin-config/gitsigns"] = {
