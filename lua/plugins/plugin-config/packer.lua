@@ -91,8 +91,6 @@ require("packer").startup(
     -- 显示光标所在函数或代码块
     use({ "nvim-treesitter/nvim-treesitter-context" })
 
-    -- use({"mg979/vim-visual-multi"})
-
     -- AutoSave
     use(
         {
@@ -102,10 +100,6 @@ require("packer").startup(
         end
     }
     )
-
-    -- 代码格式化
-    -- neoformat
-    -- use("sbdchd/neoformat")
 
     -- 快捷操作
     -- hop

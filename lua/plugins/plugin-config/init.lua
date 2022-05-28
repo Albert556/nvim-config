@@ -2,7 +2,7 @@
 local configMap = {
     -- 加载autosave
     ["plugins/plugin-config/autosave"] = {
-        enable = true,
+        enable = false,
         models = { "autosave" }
     },
     -- 加载bufferline配置

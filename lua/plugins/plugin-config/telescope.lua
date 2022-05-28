@@ -168,6 +168,6 @@ vim.keymap.set("n", "<leader>ft", "<cmd>lua require('telescope.builtin').help_ta
 vim.keymap.set(
     "n",
     "<leader>fw",
-    "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find<CR>",
+    "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>",
     { noremap = true, silent = true }
 )
