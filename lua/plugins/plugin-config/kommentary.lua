@@ -1,8 +1,10 @@
+-- https://github.com/b3nj5m1n/kommentary
+-- 注释
 
 local kommentary = require('kommentary')
 local kommentary_config = require('kommentary.config')
 
-kommentary_config.configure_language({"c", "cpp", "go", "lua", "rust"}, {
+kommentary_config.configure_language({ "c", "cpp", "go", "lua", "rust" }, {
     prefer_single_line_comments = true,
 })
 

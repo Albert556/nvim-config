@@ -1,3 +1,6 @@
+-- https://github.com/lukas-reineke/indent-blankline.nvim
+-- 锁进显示，换行显示，括号匹配显示
+
 vim.opt.list = true
 -- vim.opt.listchars:append("space:⋅")
 -- vim.opt.listchars:append("eol:↴")

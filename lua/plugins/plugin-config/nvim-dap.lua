@@ -59,46 +59,46 @@ end
 -- 初始化调试界面
 dapui.setup(
     {
-        icons = {expanded = "▾", collapsed = "▸"},
-        mappings = {
-            -- Use a table to apply multiple mappings
-            expand = {"o", "<2-LeftMouse>", "<CR>"},
-            open = "O",
-            remove = "d",
-            edit = "e",
-            repl = "r",
-            toggle = "t"
-        },
-        sidebar = {
-            -- You can change the order of elements in the sidebar
-            elements = {
-                -- Provide as ID strings or tables with "id" and "size" keys
-                {
-                    id = "scopes",
-                    size = 0.35 -- Can be float or integer > 1
-                },
-                {id = "stacks", size = 0.35},
-                {id = "watches", size = 0.15},
-                {id = "breakpoints", size = 0.15}
+    icons = { expanded = "▾", collapsed = "▸" },
+    mappings = {
+        -- Use a table to apply multiple mappings
+        expand = { "o", "<2-LeftMouse>", "<CR>" },
+        open = "O",
+        remove = "d",
+        edit = "e",
+        repl = "r",
+        toggle = "t"
+    },
+    sidebar = {
+        -- You can change the order of elements in the sidebar
+        elements = {
+            -- Provide as ID strings or tables with "id" and "size" keys
+            {
+                id = "scopes",
+                size = 0.35 -- Can be float or integer > 1
             },
-            size = 40,
-            position = "left" -- Can be "left", "right", "top", "bottom"
+            { id = "stacks", size = 0.35 },
+            { id = "watches", size = 0.15 },
+            { id = "breakpoints", size = 0.15 }
         },
-        tray = {
-            elements = {"repl"},
-            size = 5,
-            position = "bottom" -- Can be "left", "right", "top", "bottom"
-        },
-        floating = {
-            max_height = nil, -- These can be integers or a float between 0 and 1.
-            max_width = nil, -- Floats will be treated as percentage of your screen.
-            border = "single", -- Border style. Can be "single", "double" or "rounded"
-            mappings = {
-                close = {"q", "<Esc>"}
-            }
-        },
-        windows = {indent = 1}
-    }
+        size = 40,
+        position = "left" -- Can be "left", "right", "top", "bottom"
+    },
+    tray = {
+        elements = { "repl" },
+        size = 5,
+        position = "bottom" -- Can be "left", "right", "top", "bottom"
+    },
+    floating = {
+        max_height = nil, -- These can be integers or a float between 0 and 1.
+        max_width = nil, -- Floats will be treated as percentage of your screen.
+        border = "single", -- Border style. Can be "single", "double" or "rounded"
+        mappings = {
+            close = { "q", "<Esc>" }
+        }
+    },
+    windows = { indent = 1 }
+}
 )
 
 -- 如果开启或关闭调试，则自动打开或关闭调试界面
@@ -116,54 +116,54 @@ end
 
 dap_virtual_text.setup(
     {
-        enabled = true, -- enable this plugin (the default)
-        enabled_commands = true, -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
-        highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
-        highlight_new_as_changed = true, -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
-        show_stop_reason = true, -- show stop reason when stopped for exceptions
-        commented = false, -- prefix virtual text with comment string
-        -- experimental features:
-        virt_text_pos = "eol", -- position of virtual text, see `:h nvim_buf_set_extmark()`
-        all_frames = false, -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
-        virt_lines = false, -- show virtual lines instead of virtual text (will flicker!)
-        virt_text_win_col = nil -- position the virtual text at a fixed window column (starting from the first text column) ,
-        -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
-    }
+    enabled = true, -- enable this plugin (the default)
+    enabled_commands = true, -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
+    highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
+    highlight_new_as_changed = true, -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
+    show_stop_reason = true, -- show stop reason when stopped for exceptions
+    commented = false, -- prefix virtual text with comment string
+    -- experimental features:
+    virt_text_pos = "eol", -- position of virtual text, see `:h nvim_buf_set_extmark()`
+    all_frames = false, -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
+    virt_lines = false, -- show virtual lines instead of virtual text (will flicker!)
+    virt_text_win_col = nil -- position the virtual text at a fixed window column (starting from the first text column) ,
+    -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
+}
 )
 
 -- keymap
 -- dapUI 显示或隐藏调试界面
-vim.keymap.set("n", "<F3>", "<cmd>lua require'dapui'.toggle()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<F3>", "<cmd>lua require'dapui'.toggle()<CR>", { noremap = true, silent = true })
 
 -- 打断点
 vim.keymap.set(
     "n",
     "<leader>db",
     "<cmd>lua require'dap'.toggle_breakpoint()<cr>",
-    {noremap = true, silent = true}
+    { noremap = true, silent = true }
 )
 -- 设置断点条件
 vim.keymap.set(
     "n",
     "<leader>dB",
     "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>",
-    {noremap = true, silent = true}
+    { noremap = true, silent = true }
 )
-vim.keymap.set("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>dr", "lua require'dap'.repl.open()<cr>", { noremap = true, silent = true })
 -- 重启调试
-vim.keymap.set("n", "<leader>dl", "lua require'dap'.run_last()<cr>", {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>dl", "lua require'dap'.run_last()<cr>", { noremap = true, silent = true })
 -- 开启调试或到下一个断点处
-vim.keymap.set("n", "<F5>", "<cmd>lua require'dap'.continue()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<F5>", "<cmd>lua require'dap'.continue()<CR>", { noremap = true, silent = true })
 -- 单步跳过执行（不进入函数内部，无回溯阶段）
-vim.keymap.set("n", "<F10>", "<cmd>lua require'dap'.step_over()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<F10>", "<cmd>lua require'dap'.step_over()<CR>", { noremap = true, silent = true })
 -- 单步进入执行（会进入函数内部，有回溯阶段）
-vim.keymap.set("n", "<F11>", "<cmd>lua require'dap'.step_into()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<F11>", "<cmd>lua require'dap'.step_into()<CR>", { noremap = true, silent = true })
 -- 步出当前函数
-vim.keymap.set("n", "<F12>", "<cmd>lua require'dap'.step_out()<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<F12>", "<cmd>lua require'dap'.step_out()<CR>", { noremap = true, silent = true })
 -- 退出调试（关闭调试，关闭 repl，关闭 ui，清除内联文本）
 vim.keymap.set(
     "n",
     "<F4>",
     "<cmd>lua require'dap'.terminate()<CR><cmd>lua require'dap.repl'.close()<CR><cmd>lua require'dapui'.close()<CR><cmd>DapVirtualTextForceRefresh<CR>",
-    {noremap = true, silent = true}
+    { noremap = true, silent = true }
 )

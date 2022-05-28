@@ -33,7 +33,7 @@ vim.keymap.set("v", "K", "10k", {noremap = true, silent = true})
 
 -- 回到上一个tag
 -- 引申为回到函数跳转
-vim.keymap.set("n", "gb", "<C-t>", {noremap = true, silent = true})
+vim.keymap.set("n", "t", "<C-t>", {noremap = true, silent = true})
 
 -- 格式化代码 Neoformat
 vim.keymap.set("n", "<leader>=", "<cmd>Neoformat<CR>", {noremap = true, silent = true})

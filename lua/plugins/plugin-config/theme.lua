@@ -1,4 +1,3 @@
-
 vim.cmd([[ set background=light ]])
 -- 应用主题
 local colorscheme = "PaperColor"

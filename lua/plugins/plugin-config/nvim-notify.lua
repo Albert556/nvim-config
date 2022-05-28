@@ -1,4 +1,5 @@
 -- https://github.com/rcarriga/nvim-notify
+-- 弹框提示信息
 
 vim.notify = require("notify")
 
@@ -16,5 +17,5 @@ vim.keymap.set(
     "n",
     "<leader>nh",
     "<cmd>lua require('telescope').extensions.notify.notify()<CR>",
-    {noremap = true, silent = true}
+    { noremap = true, silent = true }
 )

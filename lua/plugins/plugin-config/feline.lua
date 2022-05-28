@@ -1,4 +1,5 @@
 -- https://github.com/feline-nvim/feline.nvim
+-- 状态栏
 
 local feline = require("feline")
 
@@ -212,8 +213,8 @@ local comps = {
     git = {
         branch = {
             provider = "git_branch",
-            icon = " ",
-            -- icon = ' ',
+            -- icon = " ",
+            icon = ' ',
             left_sep = " ",
             hl = {
                 fg = colors.violet,
@@ -263,8 +264,8 @@ table.insert(components.inactive[1], comps.vi_mode.left)
 table.insert(components.inactive[1], comps.file.info)
 table.insert(components.active[3], comps.diagnos.err)
 table.insert(components.active[3], comps.diagnos.warn)
--- table.insert(components.active[3], comps.diagnos.hint)
--- table.insert(components.active[3], comps.diagnos.info)
+table.insert(components.active[3], comps.diagnos.hint)
+table.insert(components.active[3], comps.diagnos.info)
 table.insert(components.active[3], comps.lsp.name)
 table.insert(components.active[3], comps.file.os)
 table.insert(components.active[3], comps.file.position)
@@ -273,7 +274,7 @@ table.insert(components.active[3], comps.scroll_bar)
 table.insert(components.active[3], comps.vi_mode.right)
 
 feline.setup {
-    colors = {bg = colors.bg, fg = colors.fg},
+    colors = { bg = colors.bg, fg = colors.fg },
     components = components,
     vi_mode_colors = vi_mode_colors,
     force_inactive = {
@@ -283,7 +284,7 @@ feline.setup {
             "fugitive",
             "fugitiveblame"
         },
-        buftypes = {"terminal"},
+        buftypes = { "terminal" },
         bufnames = {}
     }
 }
