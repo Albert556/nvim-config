@@ -76,6 +76,11 @@ local configMap = {
         enable = true,
         models = { "lspkind", "cmp" }
     },
+    -- 加载高亮
+    ["plugins/plugin-config/nvim-cursorline"] = {
+        enable = true,
+        models = { "nvim-cursorline"}
+    },
     -- 代码调试
     ["plugins/plugin-config/nvim-dap"] = {
         enable = true,
