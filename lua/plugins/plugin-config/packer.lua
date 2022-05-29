@@ -93,6 +93,8 @@ require("packer").startup(
     }
     )
 
+    use({ "yamatsum/nvim-cursorline" })
+
     -- 代码注释
     use({ "b3nj5m1n/kommentary" })
 
