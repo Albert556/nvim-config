@@ -31,8 +31,3 @@ vim.keymap.set("n", "K", "10k", {noremap = true, silent = true})
 vim.keymap.set("v", "J", "10j", {noremap = true, silent = true})
 vim.keymap.set("v", "K", "10k", {noremap = true, silent = true})
 
--- 回到上一个tag
--- 引申为回到函数跳转
-vim.keymap.set("n", "t", "<C-t>", {noremap = true, silent = true})
-
---------------------------------------------------------------------
