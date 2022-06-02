@@ -16,10 +16,8 @@ require("packer").startup(
 
     -- theme
     use({
-        "NLKNguyen/papercolor-theme",
-        config = function()
-            require("plugins.plugin-config.theme")
-        end
+        "catppuccin/nvim",
+        as = "catppuccin"
     })
 
     -- edit
