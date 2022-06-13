@@ -65,9 +65,9 @@ cmp.setup(
     },
     mapping = {
         -- 上一个
-        ["<UP>"] = cmp.mapping.select_prev_item(),
+        ["<UP>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
         -- 下一个
-        ["<DOWN>"] = cmp.mapping.select_next_item(),
+        ["<DOWN>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
         ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
         ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -97,7 +97,7 @@ cmp.setup(
                     fallback()
                 end
             end,
-            { "i", "s" }
+            { "i", "s", "c" }
         ),
         ["<S-Tab>"] = cmp.mapping(
             function(fallback)
@@ -107,7 +107,7 @@ cmp.setup(
                     fallback()
                 end
             end,
-            { "i", "s" }
+            { "i", "s", "c" }
         )
     },
     sources = cmp.config.sources(
@@ -171,26 +171,26 @@ cmp.setup.cmdline(
     ":",
     {
     mapping = cmp.mapping.preset.cmdline({
-        ['<DOWN>'] = {
-            c = function()
-                local cmp = require('cmp')
-                if cmp.visible() then
-                    cmp.select_next_item()
-                else
-                    feedkeys.call(keymap.t('<C-z>'), 'n')
-                end
-            end,
-        },
-        ['<UP>'] = {
-            c = function()
-                local cmp = require('cmp')
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                else
-                    feedkeys.call(keymap.t('<C-z>'), 'n')
-                end
-            end,
-        },
+        -- ['<DOWN>'] = {
+        --     c = function()
+        --         local cmp = require('cmp')
+        --         if cmp.visible() then
+        --             cmp.select_next_item()
+        --         else
+        --             feedkeys.call(keymap.t('<C-z>'), 'n')
+        --         end
+        --     end,
+        -- },
+        -- ['<UP>'] = {
+        --     c = function()
+        --         local cmp = require('cmp')
+        --         if cmp.visible() then
+        --             cmp.select_prev_item()
+        --         else
+        --             feedkeys.call(keymap.t('<C-z>'), 'n')
+        --         end
+        --     end,
+        -- },
     }),
     sources = cmp.config.sources(
         {

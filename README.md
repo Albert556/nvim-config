@@ -17,6 +17,9 @@ python3 -m pip install pynvim
 ```sh
 brew install npm
 npm install -g neovim
+
+# null-ls lsp
+npm install -g eslint_d
 ```
 
 * lazygit
@@ -48,4 +51,5 @@ brew install ripgrep
 
 ```sh 
 go install -v github.com/go-delve/delve/cmd/dlv@latest
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 ```
