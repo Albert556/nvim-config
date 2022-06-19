@@ -151,7 +151,7 @@ require("packer").startup(
         {
         "Pocco81/AutoSave.nvim",
         config = function()
-            local r = require("plugins/plugin-config/autosave")
+            require("plugins/plugin-config/autosave")
         end
     }
     )
@@ -251,12 +251,6 @@ require("packer").startup(
     }
     )
 
-    -- 灯泡显示提醒
-    use({"kosayoda/nvim-lightbulb",
-        config = function()
-            require("plugins/plugin-config/nvim-lightbulb")
-        end})
-
     -- 自动代码补全系列插件
     use(
         {
@@ -294,46 +288,40 @@ require("packer").startup(
     -- )
 
     -- 代码调试基础插件
-    use(
-        {
-        "mfussenegger/nvim-dap",
-        config = function()
-            require("plugins/plugin-config/nvim-dap")
-        end
-    }
-    )
+    -- use(
+    --     {
+    --     "mfussenegger/nvim-dap",
+    --     config = function()
+    --         require("plugins/plugin-config/nvim-dap")
+    --     end
+    -- }
+    -- )
 
     -- 为代码调试提供内联文本
-    use(
-        {
-        "theHamsta/nvim-dap-virtual-text",
-        requires = {
-            "mfussenegger/nvim-dap"
-        },
-        config = function()
-            -- require("plugins/plugin-config/feline")
-        end
-    }
-    )
+    -- use(
+    --     {
+    --     "theHamsta/nvim-dap-virtual-text",
+    --     requires = {
+    --         "mfussenegger/nvim-dap"
+    --     },
+    --     config = function()
+    --         -- require("plugins/plugin-config/feline")
+    --     end
+    -- }
+    -- )
 
     -- 为代码调试提供 UI 界面
-    use(
-        {
-        "rcarriga/nvim-dap-ui",
-        requires = {
-            "mfussenegger/nvim-dap"
-        },
-        config = function()
-            require("plugins/plugin-config/feline")
-        end
-    }
-    )
-
-    -- lua debug
-    use({ "jbyuki/one-small-step-for-vimkind" ,
-        config = function()
-            -- require("plugins/plugin-config/feline")
-        end})
+    -- use(
+    --     {
+    --     "rcarriga/nvim-dap-ui",
+    --     requires = {
+    --         "mfussenegger/nvim-dap"
+    --     },
+    --     config = function()
+    --         require("plugins/plugin-config/feline")
+    --     end
+    -- }
+    -- )
 
     -- which-key
     -- whichkey 显示key map
