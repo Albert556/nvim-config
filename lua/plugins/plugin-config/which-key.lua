@@ -1,8 +1,12 @@
 -- https://github.com/folke/which-key.nvim
 -- 显示快捷键
 
-local which_key = require("which-key")
-
+local pluginName = "which-key"
+local which_key, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 local mappings = {}
 
 local opts = {}

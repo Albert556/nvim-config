@@ -1,7 +1,12 @@
 -- https://github.com/williamboman/nvim-lsp-installer
 -- lsp快速安装
 
-local lsp_installer = require("nvim-lsp-installer")
+local pluginName = "nvim-lsp-installer"
+local lsp_installer, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 lsp_installer.settings(
     {

@@ -1,7 +1,12 @@
 -- https://github.com/feline-nvim/feline.nvim
 -- 状态栏
 
-local feline = require("feline")
+local pluginName = "feline"
+local feline, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 local colors = {
     bg = "#282c34",

@@ -1,7 +1,12 @@
 -- https://github.com/tami5/lspsaga.nvim
 -- lsp ui
 
-local lspsaga = require("lspsaga")
+local pluginName = "lspsaga"
+local lspsaga, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 lspsaga.setup(
     {

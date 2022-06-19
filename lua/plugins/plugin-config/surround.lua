@@ -1,6 +1,11 @@
 -- https://github.com/ur4ltz/surround.nvim
 
-local surround = require("surround")
+local pluginName = "surround"
+local surround, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 surround.setup(
     {

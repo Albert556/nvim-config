@@ -1,7 +1,12 @@
 -- https://github.com/akinsho/bufferline.nvim
 -- buffer控制插件
 
-local bufferline = require("bufferline")
+local pluginName = "bufferline"
+local bufferline, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 bufferline.setup(
     {

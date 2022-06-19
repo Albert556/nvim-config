@@ -2,7 +2,12 @@
 -- 光标当前行
 -- 光标所在单词高亮
 
-local cursorline = require('nvim-cursorline')
+local pluginName = "nvim-cursorline"
+local cursorline, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 cursorline.setup {
   cursorline = {

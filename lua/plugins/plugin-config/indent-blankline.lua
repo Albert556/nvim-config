@@ -5,7 +5,12 @@ vim.opt.list = true
 -- vim.opt.listchars:append("space:⋅")
 -- vim.opt.listchars:append("eol:↴")
 
-local indent_blankline = require("indent_blankline")
+local pluginName = "indent_blankline"
+local indent_blankline, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 indent_blankline.setup {
     space_char_blankline = " ",

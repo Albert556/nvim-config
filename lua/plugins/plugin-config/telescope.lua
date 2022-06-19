@@ -15,15 +15,27 @@
 -- -v 反转匹配
 -- -g 通配符文件或文件夹，可以用!来取反
 
-local telescope = require("telescope")
+local pluginName = "telescope"
+local telescope, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
+
 local actions = require("telescope.actions")
 -- disable preview binaries
 local previewers = require("telescope.previewers")
-local Job = require("plenary.job")
+
+local pluginName = "plenary.job"
+local plenary_job, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 local new_maker = function(filepath, bufnr, opts)
     filepath = vim.fn.expand(filepath)
-    Job:new(
+    plenary_job:new(
         {
         command = "file",
         args = { "--mime-type", "-b", filepath },

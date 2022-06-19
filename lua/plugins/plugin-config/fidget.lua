@@ -1,7 +1,12 @@
 -- https://github.com/j-hui/fidget.nvim
 -- lsp加载显示
 
-local fidget = require("fidget")
+local pluginName = "fidget"
+local fidget, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 fidget.setup(
     {

@@ -1,7 +1,13 @@
 -- https://github.com/b3nj5m1n/kommentary
 -- 注释
 
-local kommentary = require('kommentary')
+local pluginName = "kommentary"
+local kommentary, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
+
 local kommentary_config = require('kommentary.config')
 
 kommentary_config.configure_language({ "c", "cpp", "go", "lua", "rust" }, {

@@ -2,7 +2,12 @@
 -- 在左侧显示灯泡，提示有code action
 
 -- Showing defaults
-local lightbulb = require('nvim-lightbulb')
+local pluginName = "nvim-lightbulb"
+local lightbulb, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 lightbulb.setup({
     -- LSP client names to ignore

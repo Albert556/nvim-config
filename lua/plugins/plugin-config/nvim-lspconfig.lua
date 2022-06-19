@@ -1,6 +1,11 @@
 -- https://github.com/neovim/nvim-lspconfig
 
-local lspconfig = require("lspconfig")
+local pluginName = "lspconfig"
+local lspconfig, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 -- 配置lsp显示UI
 vim.diagnostic.config(

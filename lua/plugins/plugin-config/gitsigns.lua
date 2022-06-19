@@ -1,7 +1,12 @@
 -- https://github.com/lewis6991/gitsigns.nvim
 -- git blame，简单操作
 
-local gitsigns = require("gitsigns")
+local pluginName = "gitsigns"
+local gitsigns, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 gitsigns.setup {
     signs = {

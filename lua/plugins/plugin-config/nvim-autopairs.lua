@@ -1,7 +1,12 @@
 -- https://github.com/windwp/nvim-autopairs
 -- 自动插入匹配括号
 
-local autopairs = require("nvim-autopairs")
+local pluginName = "nvim-autopairs"
+local autopairs, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 autopairs.setup {
     check_ts = true,

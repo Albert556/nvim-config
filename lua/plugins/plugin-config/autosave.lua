@@ -1,7 +1,12 @@
 -- https://github.com/Pocco81/AutoSave.nvim
 -- 文件自动保存
 
-local autosave = require("autosave")
+local pluginName = "autosave"
+local autosave, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 autosave.setup(
     {

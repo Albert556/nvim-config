@@ -1,6 +1,11 @@
 -- https://github.com/akinsho/toggleterm.nvim
 
-local toggleterm = require("toggleterm")
+local pluginName = "toggleterm"
+local toggleterm, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 local shell = vim.o.shell
 if vim.fn.has("win32") == 1 then

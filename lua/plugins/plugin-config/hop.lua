@@ -5,7 +5,13 @@
 
 -- Use better keys for the bépo keyboard layout and set
 -- a balanced distribution of terminal / sequence keys
-local hop = require("hop")
+local hop, ok = pall(require, "hop")
+local pluginName = "hop"
+local hop, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
 hop.setup(
     {

@@ -1,8 +1,14 @@
 -- https://github.com/rcarriga/nvim-notify
 -- 弹框提示信息
 
-vim.notify = require("notify")
+local pluginName = "notify"
+local notify, ok = pall(require, pluginName)
+if not ok then
+    vim.notify(pluginName.." load error", WARN)
+    return
+end
 
+vim.notify = notify
 vim.notify.setup({})
 
 -- 使用案例：
