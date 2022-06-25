@@ -3,9 +3,8 @@
 -- WARN: dap 手动下载调试器
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
 
-local dap, ok = pall(require, "dap")
 local pluginName = "dap"
-local dap, ok = pall(require, pluginName)
+local ok, dap = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return
@@ -13,7 +12,7 @@ end
 
 -- https://github.com/rcarriga/nvim-dap-ui
 local pluginName = "dapui"
-local dapui, ok = pall(require, pluginName)
+local ok, dapui = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return
@@ -21,7 +20,7 @@ end
 
 -- https://github.com/theHamsta/nvim-dap-virtual-text
 local pluginName = "nvim-dap-virtual-text"
-local dap_virtual_text, ok = pall(require, pluginName)
+local ok, dap_virtual_text = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

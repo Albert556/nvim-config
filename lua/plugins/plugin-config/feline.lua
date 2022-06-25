@@ -2,7 +2,7 @@
 -- 状态栏
 
 local pluginName = "feline"
-local feline, ok = pall(require, pluginName)
+local ok, feline = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

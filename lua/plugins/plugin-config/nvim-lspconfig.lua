@@ -1,7 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig
 
 local pluginName = "lspconfig"
-local lspconfig, ok = pall(require, pluginName)
+local ok, lspconfig = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

@@ -22,6 +22,29 @@ npm install -g neovim
 npm install -g eslint_d
 ```
 
+### lsp
+
+* pyright
+
+```sh
+sudo npm install -g pyright
+```
+
+* go
+
+```sh
+go install -v github.com/go-delve/delve/cmd/dlv@latest
+go install golang.org/x/tools/gopls@latest
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+```
+
+* rust
+
+* typescript
+```sh
+npm install -g typescript-language-server
+```
+
 * lazygit
 
 ```sh
@@ -47,9 +70,3 @@ brew install ripgrep
 
 ### cmp
 
-* go
-
-```sh 
-go install -v github.com/go-delve/delve/cmd/dlv@latest
-go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-```

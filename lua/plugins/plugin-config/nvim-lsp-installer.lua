@@ -2,7 +2,7 @@
 -- lsp快速安装
 
 local pluginName = "nvim-lsp-installer"
-local lsp_installer, ok = pall(require, pluginName)
+local ok, lsp_installer = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return
@@ -10,6 +10,7 @@ end
 
 lsp_installer.settings(
     {
+    automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
     ui = {
         icons = {
             server_installed = "✓",
@@ -83,55 +84,60 @@ local on_attach = function(client, bufnr)
         { noremap = true, silent = true, buffer = bufnr }
     )
 
+    -- 额外的keymap配置
+    -- 跳转到上一个问题（代替内置 LSP 的窗口，Lspsaga 让跳转问题更美观）
+    vim.keymap.set("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { noremap = true, silent = true, buffer = bufnr })
+    -- 跳转到下一个问题（代替内置 LSP 的窗口，Lspsaga 让跳转问题更美观）
+    vim.keymap.set("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<CR>", { noremap = true, silent = true, buffer = bufnr })
+    -- 工作区诊断（代替内置 LSP 的窗口，telescope 插件让工作区诊断更方便）
+    vim.keymap.set("n", "<leader>wd", "<cmd>Telescope diagnostics<CR>", { noremap = true, silent = true, buffer = bufnr })
+    -- 当前文件的诊断
+    vim.keymap.set(
+        "n",
+        "<leader>sd",
+        "<cmd>lua vim.diagnostic.setloclist()<CR>",
+        { noremap = true, silent = true, buffer = bufnr }
+    )
+    -- 行诊断
+    vim.keymap.set(
+        "n",
+        "<leader>ld",
+        "<cmd>Lspsaga show_line_diagnostics<CR>",
+        { noremap = true, silent = true, buffer = bufnr }
+    )
+    -- 光标处诊断
+    vim.keymap.set(
+        "n",
+        "<leader>cd",
+        "<cmd>Lspsaga show_cursor_diagnostics<CR>",
+        { noremap = true, silent = true, buffer = bufnr }
+    )
+
+    vim.keymap.set(
+        "n",
+        "<C-k>",
+        "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>",
+        { noremap = true, silent = true, buffer = bufnr }
+    )
+    vim.keymap.set(
+        "n",
+        "<C-j>",
+        "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>",
+        { noremap = true, silent = true, buffer = bufnr }
+    )
+
     require "lsp_signature".on_attach() -- Note: add in lsp client on-attach
 end
 
--- 额外的keymap配置
--- 跳转到上一个问题（代替内置 LSP 的窗口，Lspsaga 让跳转问题更美观）
-vim.keymap.set("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { noremap = true, silent = true, buffer = bufnr })
--- 跳转到下一个问题（代替内置 LSP 的窗口，Lspsaga 让跳转问题更美观）
-vim.keymap.set("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<CR>", { noremap = true, silent = true, buffer = bufnr })
--- 工作区诊断（代替内置 LSP 的窗口，telescope 插件让工作区诊断更方便）
-vim.keymap.set("n", "<leader>wd", "<cmd>Telescope diagnostics<CR>", { noremap = true, silent = true, buffer = bufnr })
--- 当前文件的诊断
-vim.keymap.set(
-    "n",
-    "<leader>sd",
-    "<cmd>lua vim.diagnostic.setloclist()<CR>",
-    { noremap = true, silent = true, buffer = bufnr }
-)
--- 行诊断
-vim.keymap.set(
-    "n",
-    "<leader>ld",
-    "<cmd>Lspsaga show_line_diagnostics<CR>",
-    { noremap = true, silent = true, buffer = bufnr }
-)
--- 光标处诊断
-vim.keymap.set(
-    "n",
-    "<leader>cd",
-    "<cmd>Lspsaga show_cursor_diagnostics<CR>",
-    { noremap = true, silent = true, buffer = bufnr }
-)
-
-vim.keymap.set(
-    "n",
-    "<C-k>",
-    "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>",
-    { noremap = true, silent = true, buffer = bufnr }
-)
-vim.keymap.set(
-    "n",
-    "<C-j>",
-    "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>",
-    { noremap = true, silent = true, buffer = bufnr }
-)
 
 -- 使用 cmp_nvim_lsp 代替内置 omnifunc，获得更强的补全体验
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
--- 代替内置 omnifunc
+local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if cmp_nvim_lsp then
+    capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+else
+    vim.notify("cmp_nvim_lsp load error", WARN)
+end
 
 -- server list
 local servers = {

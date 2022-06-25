@@ -2,7 +2,7 @@
 -- 注释
 
 local pluginName = "kommentary"
-local kommentary, ok = pall(require, pluginName)
+local ok, kommentary = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

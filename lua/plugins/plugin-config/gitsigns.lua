@@ -2,7 +2,7 @@
 -- git blame，简单操作
 
 local pluginName = "gitsigns"
-local gitsigns, ok = pall(require, pluginName)
+local ok, gitsigns = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

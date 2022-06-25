@@ -16,7 +16,7 @@
 -- -g 通配符文件或文件夹，可以用!来取反
 
 local pluginName = "telescope"
-local telescope, ok = pall(require, pluginName)
+local ok, telescope = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return
@@ -27,7 +27,7 @@ local actions = require("telescope.actions")
 local previewers = require("telescope.previewers")
 
 local pluginName = "plenary.job"
-local plenary_job, ok = pall(require, pluginName)
+local ok, plenary_job = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

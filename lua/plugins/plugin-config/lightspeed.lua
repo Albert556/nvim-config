@@ -4,7 +4,7 @@
 -- NOTE: This is just illustration - there is no need to copy/paste the
 -- defaults, or call `setup` at all, if you do not want to change anything.
 local pluginName = "lightspeed"
-local lightspeed, ok = pall(require, pluginName)
+local ok, lightspeed = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

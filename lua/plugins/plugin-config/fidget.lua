@@ -2,7 +2,7 @@
 -- lsp加载显示
 
 local pluginName = "fidget"
-local fidget, ok = pall(require, pluginName)
+local ok, fidget = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

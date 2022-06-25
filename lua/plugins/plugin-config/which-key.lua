@@ -2,7 +2,7 @@
 -- 显示快捷键
 
 local pluginName = "which-key"
-local which_key, ok = pall(require, pluginName)
+local ok, which_key = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

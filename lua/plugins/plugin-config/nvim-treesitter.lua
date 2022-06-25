@@ -2,17 +2,16 @@
 -- https://github.com/p00f/nvim-ts-rainbow
 
 local pluginName = "nvim-treesitter"
-local nvim_treesitter, ok = pall(require, pluginName)
+local ok, nvim_treesitter = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return
 end
 
-local treesitter_configs, ok = require("nvim-treesitter.configs")
+local treesitter_configs = require("nvim-treesitter.configs")
 
-local treesitter_context, ok = pall(require, "treesitter-context")
 local pluginName = "treesitter-context"
-local treesitter_context, ok = pall(require, pluginName)
+local ok, treesitter_context = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

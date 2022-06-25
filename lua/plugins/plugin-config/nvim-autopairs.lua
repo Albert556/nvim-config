@@ -2,7 +2,7 @@
 -- 自动插入匹配括号
 
 local pluginName = "nvim-autopairs"
-local autopairs, ok = pall(require, pluginName)
+local ok, autopairs = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

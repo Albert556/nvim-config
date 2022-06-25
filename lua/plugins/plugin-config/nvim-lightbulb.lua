@@ -3,7 +3,7 @@
 
 -- Showing defaults
 local pluginName = "nvim-lightbulb"
-local lightbulb, ok = pall(require, pluginName)
+local ok, lightbulb = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

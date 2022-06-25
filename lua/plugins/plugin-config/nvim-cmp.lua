@@ -18,14 +18,14 @@
 --    ~/.local/share/nvim/plugged/cmp-tabnine/install.sh
 
 local pluginName = "lspkind"
-local lspkind, ok = pall(require, pluginName)
+local ok, lspkind = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return
 end
 
 local pluginName = "cmp"
-local cmp, ok = pall(require, pluginName)
+local ok, cmp = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

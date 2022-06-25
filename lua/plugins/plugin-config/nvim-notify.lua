@@ -2,7 +2,7 @@
 -- 弹框提示信息
 
 local pluginName = "notify"
-local notify, ok = pall(require, pluginName)
+local ok, notify = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

@@ -2,7 +2,7 @@
 -- 插入模式下函数参数提示
 
 local pluginName = "lsp_signature"
-local lsp_signature, ok = pall(require, pluginName)
+local ok, lsp_signature = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

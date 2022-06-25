@@ -2,7 +2,7 @@
 -- lsp ui
 
 local pluginName = "lspsaga"
-local lspsaga, ok = pall(require, pluginName)
+local ok, lspsaga = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

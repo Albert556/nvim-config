@@ -1,7 +1,7 @@
 -- https://github.com/akinsho/toggleterm.nvim
 
 local pluginName = "toggleterm"
-local toggleterm, ok = pall(require, pluginName)
+local ok, toggleterm = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

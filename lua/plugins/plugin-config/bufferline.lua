@@ -2,7 +2,7 @@
 -- buffer控制插件
 
 local pluginName = "bufferline"
-local bufferline, ok = pall(require, pluginName)
+local ok, bufferline = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

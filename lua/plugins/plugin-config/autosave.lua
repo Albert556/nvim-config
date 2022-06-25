@@ -2,7 +2,7 @@
 -- 文件自动保存
 
 local pluginName = "autosave"
-local autosave, ok = pall(require, pluginName)
+local ok, autosave = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

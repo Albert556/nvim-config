@@ -3,7 +3,7 @@
 -- 光标所在单词高亮
 
 local pluginName = "nvim-cursorline"
-local cursorline, ok = pall(require, pluginName)
+local ok, cursorline = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

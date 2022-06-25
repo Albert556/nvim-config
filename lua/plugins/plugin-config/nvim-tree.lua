@@ -4,7 +4,7 @@
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 local pluginName = "nvim-tree"
-local nvim_tree, ok = pall(require, pluginName)
+local ok, nvim_tree = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return

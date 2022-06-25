@@ -6,7 +6,7 @@ vim.opt.list = true
 -- vim.opt.listchars:append("eol:↴")
 
 local pluginName = "indent_blankline"
-local indent_blankline, ok = pall(require, pluginName)
+local ok, indent_blankline = pcall(require, pluginName)
 if not ok then
     vim.notify(pluginName.." load error", WARN)
     return
