@@ -3,3 +3,7 @@ require("basic.keymaps")
 require("basic.autocmds")
 
 require("plugins.lazy")
+
+vim.cmd('colorscheme everforest')
+
+
