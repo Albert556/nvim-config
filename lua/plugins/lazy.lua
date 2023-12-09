@@ -12,11 +12,19 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  require("plugins.flash"),
+
   require("plugins.lualine"),
 
   require("plugins.neo-tree"),
 
+  require("plugins.nvim-surround"),
+
+  require("plugins.telescope"),
+
   require("plugins.theme"),
+
+  require("plugins.which-key"),
 
 }, {
 	{
