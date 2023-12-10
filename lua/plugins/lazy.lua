@@ -14,6 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   require("plugins.flash"),
 
+  require("plugins.gitsigns"),
+
   require("plugins.lualine"),
 
   require("plugins.neo-tree"),

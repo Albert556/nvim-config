@@ -3,6 +3,7 @@
   "everforest": { "branch": "master", "commit": "72f101bd63228a1a45012325e39c5280ec22c828" },
   "flash.nvim": { "branch": "main", "commit": "48817af25f51c0590653bbc290866e4890fe1cbe" },
   "github-nvim-theme": { "branch": "main", "commit": "4727aa7c1bb53a4fafcb37346a4ebb4511cec3c9" },
+  "gitsigns.nvim": { "branch": "main", "commit": "87640f5a877b18bdd49884dbcac220fed924b867" },
   "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
   "lualine.nvim": { "branch": "master", "commit": "2248ef254d0a1488a72041cfb45ca9caada6d994" },
   "lush.nvim": { "branch": "main", "commit": "f76741886b356586f9dfe8e312fbd1ab0fd1084f" },

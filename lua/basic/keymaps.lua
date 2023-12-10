@@ -36,7 +36,14 @@ vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" 
 vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- Clear search with <esc>
-vim.keymap.set({ "i", "n" }, "<esc>", "<esc><cmd>noh<cr><cmd>w<cr>", { desc = "Escape and clear hlsearch" })
+vim.keymap.set({ "i", "n" }, "<esc>", function()
+  if vim.o.buftype == '' then
+    print ""
+    return "<esc><cmd>noh<cr><cmd>w<cr>"
+  else
+    return "<esc>"
+  end
+end, { expr = true, replace_keycodes = true,desc = "Escape and clear hlsearch, Save" })
 
 -- better indenting
 vim.keymap.set("v", "<", "<gv")
