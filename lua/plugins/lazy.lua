@@ -20,6 +20,8 @@ require("lazy").setup({
 
   require("plugins.neo-tree"),
 
+  require("plugins.nvim-autopairs"),
+
   require("plugins.nvim-surround"),
 
   require("plugins.telescope"),
