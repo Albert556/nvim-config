@@ -6,6 +6,9 @@ vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, de
 
 vim.keymap.set("n", "==", "<Esc>ggVG=<C-o>", { desc = "Format And Save" })
 
+vim.api.nvim_set_keymap("n", "H", "^", { desc = "Move Line Start" })
+vim.api.nvim_set_keymap("n", "L", "$", { desc = "Move Line End" })
+
 -- Move to window using the <ctrl> hjkl keys
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
@@ -24,8 +27,8 @@ vim.keymap.set("n", "-", "<C-w>s", { desc = "Horizontal Split" })
 
 -- buffers
 -- 可能会被 bufferline 覆盖
-vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "K", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+vim.keymap.set("n", "J", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
 -- tabs
 vim.keymap.set("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
