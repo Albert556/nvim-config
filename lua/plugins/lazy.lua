@@ -12,9 +12,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  require("plugins.comment"),
+
   require("plugins.flash"),
 
   require("plugins.gitsigns"),
+
+  require("plugins.indent-blankline"),
 
   require("plugins.lualine"),
 
@@ -27,6 +31,10 @@ require("lazy").setup({
   require("plugins.telescope"),
 
   require("plugins.theme"),
+
+  require("plugins.todo-comments"),
+
+  require("plugins.trouble"),
 
   require("plugins.which-key"),
 
