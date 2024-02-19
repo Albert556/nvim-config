@@ -41,7 +41,6 @@ vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous
 -- Clear search with <esc>
 vim.keymap.set({ "i", "n" }, "<esc>", function()
   if vim.o.buftype == '' then
-    print ""
     return "<esc><cmd>noh<cr><cmd>w<cr>"
   else
     return "<esc>"
