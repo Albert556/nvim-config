@@ -5,6 +5,7 @@ vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, de
 vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = "Move Cursor Up" })
 
 vim.keymap.set("n", "==", "<Esc>ggVG=<C-o>", { desc = "Format And Save" })
+vim.keymap.set("x", "p", "pgvy", { desc = "Paste" })
 
 vim.api.nvim_set_keymap("n", "H", "^", { desc = "Move Line Start" })
 vim.api.nvim_set_keymap("n", "L", "$", { desc = "Move Line End" })
