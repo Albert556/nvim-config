@@ -49,5 +49,5 @@ vim.keymap.set({ "i", "n" }, "<esc>", function()
 end, { expr = true, replace_keycodes = true,desc = "Escape and clear hlsearch, Save" })
 
 -- better indenting
-vim.keymap.set({"n","v"}, "<", "<gv")
-vim.keymap.set({"n","v"}, ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")

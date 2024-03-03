@@ -5,6 +5,23 @@ local function augroup(name)
   return vim.api.nvim_create_augroup(name, { clear = true })
 end
 
+-- 动态相对行号
+local relative_number = augroup("relative_number")
+vim.api.nvim_create_autocmd("InsertEnter", {
+  group = relative_number,
+  callback = function()
+    vim.opt.relativenumber = false
+  end
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = relative_number,
+  callback = function()
+    vim.opt.relativenumber = true
+  end
+})
+
+
+
 -- 去除行尾空白和尾部空行
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = augroup("tidy"),
@@ -61,5 +78,12 @@ vim.api.nvim_create_autocmd("BufReadPost", {
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
   end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"c", "cpp", "java"},
+  callback = function()
+    vim.opt.matchpairs:append("=:;")
+  end
 })
 

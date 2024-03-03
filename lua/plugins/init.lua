@@ -14,6 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   require("plugins.comment"),
 
+  require("plugins.conform"),
+
   require("plugins.flash"),
 
   require("plugins.gitsigns"),

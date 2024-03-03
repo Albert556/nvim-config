@@ -1,8 +1,6 @@
-require("basic.options")
-require("basic.keymaps")
-require("basic.autocmds")
+require("basic")
 
-require("plugins.lazy")
+require("plugins")
 
 vim.cmd('colorscheme everforest')
 

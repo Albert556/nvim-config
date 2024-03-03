@@ -12,7 +12,7 @@ local M = {
       {
         "\\",
         function()
-          require("neo-tree.command").execute({ toggle = true, reveal = true })
+          require("neo-tree.command").execute({ toggle = true, reveal = true, position = "float" })
         end,
         desc = "Explorer NeoTree (root dir)",
       },
@@ -38,6 +38,7 @@ local M = {
         use_libuv_file_watcher = true,
       },
       window = {
+        position = "float",
         mappings = {
           ["<space>"] = "none",
         },
