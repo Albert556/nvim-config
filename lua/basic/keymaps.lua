@@ -7,14 +7,14 @@ vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, de
 vim.keymap.set("n", "==", "<Esc>ggVG=<C-o>", { desc = "Format And Save" })
 vim.keymap.set("x", "p", "pgvy", { desc = "Paste" })
 
-vim.api.nvim_set_keymap("n", "H", "^", { desc = "Move Line Start" })
-vim.api.nvim_set_keymap("n", "L", "$", { desc = "Move Line End" })
+vim.keymap.set({"n", "v"}, "H", "^", { desc = "Move Line Start" })
+vim.keymap.set({"n", "v"}, "L", "$", { desc = "Move Line End" })
 
 -- Move to window using the <ctrl> hjkl keys
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
 
 -- Resize window using <ctrl> arrow keys
 vim.keymap.set("n", "<M-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
@@ -49,8 +49,5 @@ vim.keymap.set({ "i", "n" }, "<esc>", function()
 end, { expr = true, replace_keycodes = true,desc = "Escape and clear hlsearch, Save" })
 
 -- better indenting
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
-
--- highlights under cursor
-vim.keymap.set("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
+vim.keymap.set({"n","v"}, "<", "<gv")
+vim.keymap.set({"n","v"}, ">", ">gv")
