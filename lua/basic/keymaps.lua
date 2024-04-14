@@ -1,8 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, desc = "Move Cursor Donw" })
-vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = "Move Cursor Up" })
+vim.api.nvim_set_keymap("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true, desc = "Move Cursor Donw" })
+vim.api.nvim_set_keymap("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true, desc = "Move Cursor Up" })
 
 vim.keymap.set("n", "==", "<Esc>ggVG=<C-o>", { desc = "Format And Save" })
 vim.keymap.set("x", "p", "pgvy", { desc = "Paste" })
