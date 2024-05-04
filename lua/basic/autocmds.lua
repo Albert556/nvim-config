@@ -20,8 +20,6 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   end
 })
 
-
-
 -- 去除行尾空白和尾部空行
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = augroup("tidy"),
