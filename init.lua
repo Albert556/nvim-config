@@ -1,6 +1,0 @@
-require("basic")
-
-require("plugins")
-
-
-
