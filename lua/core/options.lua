@@ -43,3 +43,13 @@ opt.undofile = true
 opt.updatetime = 250
 
 vim.g.userevent = {"BufWritePost", "BufNewFile", "BufReadPost"}
+
+vim.g.icons = {
+  diagnostics = {
+    Error = " ",
+    Warn  = " ",
+    Hint  = " ",
+    Info  = " ",
+  },
+}
+
