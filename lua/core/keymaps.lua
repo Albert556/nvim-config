@@ -1,11 +1,8 @@
 local map = vim.keymap.set
 
-map(
-	{ "n", "v" },
-	"j",
-	"v:count == 0 ? 'gj' : 'j'",
-	{ expr = true, silent = true, desc = "Move cursor down" }
-)
+map("x", "p", "pgvy", { desc = "Paste Without Copy" })
+
+map({ "n", "v" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, desc = "Move cursor down" })
 map({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true, desc = "Move cursor up" })
 
 map({ "n" }, "|", "<Cmd>vsplit<CR>", { desc = "Vertical Split" })
