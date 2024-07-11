@@ -1,51 +1,45 @@
 local opt = vim.opt
-local o = vim.o
-local g = vim.g
 
--------------------------------------- globals -----------------------------------------
-g.toggle_theme_icon = "   "
+opt.autowrite = true
+opt.backspace:append("nostop")
+opt.breakindent = true
+opt.clipboard = "unnamedplus"
+opt.completeopt = { "menu", "menuone", "preview", "noinsert", "noselect" }
+opt.confirm = true
+opt.cursorline = true
+opt.cursorlineopt = "line"
+opt.expandtab = true
+opt.foldcolumn = "1"
+opt.foldenable = true
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.hlsearch = true
+opt.ignorecase = true
+opt.inccommand = "split"
+opt.linebreak = true
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.mouse = "a"
+opt.number = true
+opt.numberwidth = 2
+opt.pumheight = 10
+opt.relativenumber = true
+opt.scrolloff = 4
+opt.shiftwidth = 2
+-- opt.shortmess = vim.tbl_deep_extend("force", vim.opt.shortmess:get(), { s = true, I = true })
+opt.showmode = false
+opt.sidescrolloff = 8
+opt.signcolumn = "yes"
+opt.smartcase = true
+opt.smartindent = true
+opt.smoothscroll = true
+opt.softtabstop = 2
+opt.splitbelow = true
+opt.splitright = true
+opt.tabstop = 2
+opt.termguicolors = true
+opt.timeoutlen = 300
+opt.undofile = true
+opt.updatetime = 250
 
--------------------------------------- options ------------------------------------------
-o.laststatus = 3
--- o.showmode = true
-
-o.clipboard = "unnamedplus"
-o.mouse = "a"
-
-o.cursorline = true
-o.cursorlineopt = "line"
-
--- Indenting
-o.expandtab = true
-o.shiftwidth = 2
-o.smartindent = true
-o.tabstop = 2 
-o.softtabstop = 2
-
-opt.fillchars = { eob = " " }
-
-o.ignorecase = true
-o.smartcase = true
-
--- Numbers
-o.number = true
-o.numberwidth = 2
--- o.ruler = false
-
--- disable nvim intro
-
-o.signcolumn = "yes"
-o.splitbelow = true
-o.splitright = true
-o.timeoutlen = 400
-o.undofile = true
-
--- interval for writing swap file to disk, also used by gitsigns
-o.updatetime = 250
-
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
-
--- g.mapleader = " "
-
+vim.g.userevent = {"BufWritePost", "BufNewFile", "BufReadPost"}
