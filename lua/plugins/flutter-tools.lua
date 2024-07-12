@@ -14,7 +14,7 @@ return {
   },
   opts = {
     lsp = {
-      on_attach = vim.g.lsp_on_attach,
+      on_attach = vim.g.lsp_attach,
     },
   }
 

@@ -8,8 +8,8 @@ map({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true
 map({ "n" }, "|", "<Cmd>vsplit<CR>", { desc = "Vertical Split" })
 map({ "n" }, "-", "<Cmd>split<CR>", { desc = "Horizontal Split" })
 
-map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Esc and clear highlights" })
-map("i", "<Esc>", "<Esc><cmd>noh<CR>", { desc = "general clear highlights" })
+map("n", "<Esc>", "<cmd>nohlsearch<CR><cmd>w<CR>", { desc = "Clear highlights And Save" })
+map("i", "<Esc>", "<Esc><cmd>nohlsearch<CR><cmd>w<CR>", { desc = "Esc, Clear highlights And Save" })
 
 map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -60,7 +60,7 @@ map("n", "<M-Right>", "<Cmd>vertical resize +2<CR>", { desc = "Resize split righ
 map("v", "<", "<gv", { desc = "Unindent line" })
 map("v", ">", ">gv", { desc = "Indent line" })
 
-vim.g.lsp_on_attach = function(client, bufnr)
+vim.g.lsp_attach = function(client, bufnr)
   local function op(desc)
     return { buffer = bufnr, desc = "LSP " .. desc }
   end

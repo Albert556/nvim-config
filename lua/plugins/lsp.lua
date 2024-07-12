@@ -5,9 +5,10 @@ return {
     dependencies = {
       { "williamboman/mason-lspconfig.nvim" },
       {
-        'hrsh7th/nvim-cmp',
-        'L3MON4D3/LuaSnip',
-        'saadparwaiz1/cmp_luasnip',
+        -- 'hrsh7th/nvim-cmp',
+        -- 'L3MON4D3/LuaSnip',
+        -- 'saadparwaiz1/cmp_luasnip',
+        'hrsh7th/cmp-nvim-lsp',
       },
       -- { "nvimtools/none-ls.nvim" },
     },
@@ -21,27 +22,34 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       require("lspconfig").lua_ls.setup {
-        on_attach = vim.g.lsp_on_attach,
         capabilities = capabilities,
+        on_attach = vim.g.lsp_attach,
+        settings = {
+          Lua = {
+            workspace = {
+              checkThirdParty = false,
+            },
+            codeLens = {
+              enable = true,
+            },
+            completion = {
+              callSnippet = "Replace",
+            },
+            doc = {
+              privateName = { "^_" },
+            },
+            hint = {
+              enable = true,
+              setType = false,
+              paramType = true,
+              paramName = "Disable",
+              semicolon = "Disable",
+              arrayIndex = "Disable",
+            },
+          },
+        },
+
       }
-
-      local lsp_util = vim.lsp.util
-
-      -- Code Action
-      local code_action_listener = function()
-        local context = { diagnostics = vim.lsp.diagnostic.get_line_diagnostics() }
-        local params = lsp_util.make_range_params()
-        params.context = context vim.lsp.buf_request(0, 'textDocument/codeAction', params, function(err, result, ctx, config)
-          -- do something with result - e.g. check if empty and show some indication such as a sign
-        end)
-      end
-
-      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-        group = vim.api.nvim_create_augroup("code_action_sign", { clear = true }),
-        callback = function()
-          code_action_listener()
-        end,
-      })
     end,
   },
   {
@@ -64,11 +72,16 @@ return {
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
     },
+    event = { "InsertEnter", "CmdlineEnter" },
     main = "cmp",
     opts = function()
       -- nvim-cmp setup
       local cmp = require 'cmp'
+      local luasnip = require('luasnip')
       return {
+        completion = {
+          completeopt = 'menu,menuone,noinsert'
+        },
         snippet = {
           -- REQUIRED - you must specify a snippet engine
           expand = function(args)
@@ -83,15 +96,70 @@ return {
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<CR>"] = cmp.mapping({
+            i = function(fallback)
+              if cmp.visible() then
+                cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+              else
+                fallback()
+              end
+            end,
+            s = cmp.mapping.confirm({ select = true }),
+            c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+          }),
+          ["<C-n>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            elseif luasnip.locally_jumpable(1) then
+              luasnip.jump(1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<C-p>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+            elseif luasnip.locally_jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<Tab>"] = cmp.mapping(function(fallback)
+              -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+              if cmp.visible() then
+                local entry = cmp.get_selected_entry()
+                if not entry then
+                  cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                end
+                cmp.confirm()
+              else
+                fallback()
+              end
+            end,
+            { "i", "s" }
+          ),
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
         }, {
           { name = 'buffer' },
+          {
+            name = 'cmdline',
+            option = {
+              ignore_cmds = { 'Man', '!' }
+            }
+          },
+        }, {
+          { name = 'path' },
+
         })
       }
     end,
   },
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = { "rafamadriz/friendly-snippets" },
+  }
 }

@@ -4,7 +4,7 @@ opt.autowrite = true
 opt.backspace:append("nostop")
 opt.breakindent = true
 opt.clipboard = "unnamedplus"
-opt.completeopt = { "menu", "menuone", "preview", "noinsert", "noselect" }
+opt.completeopt = { "menu", "menuone",  "noinsert"}
 opt.confirm = true
 opt.cursorline = true
 opt.cursorlineopt = "line"
