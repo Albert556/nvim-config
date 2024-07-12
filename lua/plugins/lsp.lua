@@ -20,16 +20,6 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    opts = {
-      ensure_installed = {
-        "clangd",
-        "codelldb",
-        "gopls",
-        "lua-language-server",
-        "rust-analyzer",
-        "shellcheck",
-        "shfmt",
-      },
-    },
+    opts = {},
   },
 }
