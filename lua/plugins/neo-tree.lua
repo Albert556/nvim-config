@@ -13,7 +13,7 @@ return {
   },
   deactivate = function()
     vim.cmd([[Neotree close]])
-  end, 
+  end,
   init = function()
     -- FIX: use `autocmd` for lazy-loading neo-tree instead of directly requiring it,
     -- because `cwd` is not set up properly.
@@ -35,12 +35,12 @@ return {
   end,
   opts = {
     close_if_last_window = true,
-      sources = { "filesystem", "buffers", "git_status" },
-      open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
-      filesystem = {
-        follow_current_file = { enabled = true },
-        filtered_items = {  hide_dotfiles = false, hide_gitignored = false },
-        use_libuv_file_watcher = true,
-      },
+    sources = { "filesystem", "buffers", "git_status" },
+    open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
+    filesystem = {
+      follow_current_file = { enabled = true },
+      filtered_items = { hide_dotfiles = false, hide_gitignored = false },
+      use_libuv_file_watcher = true,
+    },
   }
 }

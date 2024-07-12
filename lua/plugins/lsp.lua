@@ -3,7 +3,6 @@ return {
     "neovim/nvim-lspconfig",
     event = vim.g.userevent,
     dependencies = {
-      { "williamboman/mason.nvim" },
       { "williamboman/mason-lspconfig.nvim" },
       {
         'hrsh7th/nvim-cmp',
@@ -14,6 +13,9 @@ return {
     opts = {
     },
     config = function(_, opts)
+      -- load mason-lspconfig
+      require("mason-lspconfig").setup()
+
       -- Add additional capabilities supported by nvim-cmp
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -25,7 +27,7 @@ return {
       local lsp_util = vim.lsp.util
 
       -- Code Action
-      local code_action_listener =  function ()
+      local code_action_listener = function()
         local context = { diagnostics = vim.lsp.diagnostic.get_line_diagnostics() }
         local params = lsp_util.make_range_params()
         params.context = context
@@ -34,7 +36,7 @@ return {
         end)
       end
 
-      vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
         group = vim.api.nvim_create_augroup("code_action_sign", { clear = true }),
         callback = function()
           code_action_listener()
@@ -43,7 +45,8 @@ return {
     end,
   },
   {
-   "williamboman/mason.nvim",
+    "williamboman/mason.nvim",
+    cmd = { "Mason", "MasonInstall", "MasonLog", "MasonUninstall", "MasonUninstallAll", "MasonUpdata" },
     opts = {},
   },
   {
@@ -79,9 +82,8 @@ return {
         mapping = cmp.mapping.preset.insert({
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
@@ -91,7 +93,8 @@ return {
         })
       }
     end,
+  },
+  {
 
-  }
+  },
 }
-

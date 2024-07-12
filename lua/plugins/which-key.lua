@@ -23,13 +23,13 @@ return {
       },
       ["<leader>"] = {
         name = "More Actions",
-        f = {
+        f    = {
           name = "Find Or Search",
           f = { "<cmd>Telescope find_files<cr>", "Find File" },
           r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
           n = { "<cmd>enew<cr>", "New File" },
         },
-        h  = {
+        h    = {
           name = "Git Actions",
         },
       },

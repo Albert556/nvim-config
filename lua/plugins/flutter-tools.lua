@@ -16,6 +16,6 @@ return {
     lsp = {
       on_attach = vim.g.lsp_on_attach,
     },
-  } 
+  }
 
 }

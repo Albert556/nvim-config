@@ -1,7 +1,7 @@
-return { 
+return {
   "lukas-reineke/indent-blankline.nvim",
   event = vim.g.userevent,
-  main = "ibl", 
+  main = "ibl",
   opts = {
     indent = { char = "│" },
     scope = { char = "│" },
@@ -33,4 +33,3 @@ return {
     },
   }
 }
-

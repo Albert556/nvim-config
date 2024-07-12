@@ -35,10 +35,10 @@ map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help 
 map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
 map(
-	"n",
-	"<leader>fz",
-	"<cmd>Telescope current_buffer_fuzzy_find<CR>",
-	{ desc = "telescope find in current buffer" }
+  "n",
+  "<leader>fz",
+  "<cmd>Telescope current_buffer_fuzzy_find<CR>",
+  { desc = "telescope find in current buffer" }
 )
 map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
@@ -46,10 +46,10 @@ map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidd
 map("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "telescope nvchad themes" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })
 map(
-	"n",
-	"<leader>fa",
-	"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-	{ desc = "telescope find all files" }
+  "n",
+  "<leader>fa",
+  "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
+  { desc = "telescope find all files" }
 )
 
 map("n", "<M-Down>", "<Cmd>resize -2<CR>", { desc = "Resize split up" })
@@ -74,10 +74,10 @@ vim.g.lsp_on_attach = function(client, bufnr)
   map("n", "<C-k>", vim.lsp.buf.signature_help, op "Show signature help")
   map("n", "rn", vim.lsp.buf.rename, op "Rename")
   map("n", "ca", vim.lsp.buf.code_action, op "Code action")
+  map("n", "gq", vim.lsp.buf.format, op "Format")
   map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, op "Add workspace folder")
   map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, op "Remove workspace folder")
   map("n", "<leader>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, op "List workspace folders")
 end
-

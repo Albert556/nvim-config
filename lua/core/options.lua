@@ -42,7 +42,7 @@ opt.timeoutlen = 300
 opt.undofile = true
 opt.updatetime = 250
 
-vim.g.userevent = {"BufWritePost", "BufNewFile", "BufReadPost"}
+vim.g.userevent = { "BufWritePost", "BufNewFile", "BufReadPost" }
 
 vim.g.icons = {
   diagnostics = {
@@ -52,4 +52,3 @@ vim.g.icons = {
     Info  = " ",
   },
 }
-
