@@ -9,6 +9,7 @@ return {
         'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
       },
+      -- { "nvimtools/none-ls.nvim" },
     },
     opts = {
     },
@@ -30,8 +31,7 @@ return {
       local code_action_listener = function()
         local context = { diagnostics = vim.lsp.diagnostic.get_line_diagnostics() }
         local params = lsp_util.make_range_params()
-        params.context = context
-        vim.lsp.buf_request(0, 'textDocument/codeAction', params, function(err, result, ctx, config)
+        params.context = context vim.lsp.buf_request(0, 'textDocument/codeAction', params, function(err, result, ctx, config)
           -- do something with result - e.g. check if empty and show some indication such as a sign
         end)
       end
@@ -93,8 +93,5 @@ return {
         })
       }
     end,
-  },
-  {
-
   },
 }
