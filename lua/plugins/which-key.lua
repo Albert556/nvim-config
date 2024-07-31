@@ -11,28 +11,16 @@ return {
   config = function(_, opts)
     local wk = require("which-key")
     wk.setup(opts)
-    wk.register({
-      ["["] = {
-        name = "Previous Action",
-      },
-      ["]"] = {
-        name = "Next Action",
-      },
-      ["g"] = {
-        name = "Goto",
-      },
-      ["<leader>"] = {
-        name = "More Actions",
-        f    = {
-          name = "Find Or Search",
-          f = { "<cmd>Telescope find_files<cr>", "Find File" },
-          r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-          n = { "<cmd>enew<cr>", "New File" },
-        },
-        h    = {
-          name = "Git Actions",
-        },
-      },
+    wk.add({
+      { "<leader>",   group = "More Actions" },
+      { "<leader>f",  group = "Find Or Search" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File" },
+      { "<leader>fn", "<cmd>enew<cr>",                 desc = "New File" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<cr>",   desc = "Open Recent File" },
+      { "<leader>h",  group = "Git Actions" },
+      { "[",          group = "Previous Action" },
+      { "]",          group = "Next Action" },
+      { "g",          group = "Goto" },
     })
   end,
 }
