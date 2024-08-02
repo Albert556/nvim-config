@@ -9,7 +9,7 @@ return {
   },
   cmd = "Neotree",
   keys = {
-    { "\\", "<cmd>Neotree toggle reveal<CR>", desc = "Toggle Explorer" },
+    -- { "\\", "<cmd>Neotree toggle reveal<CR>", desc = "Toggle Explorer" },
   },
   deactivate = function()
     vim.cmd([[Neotree close]])

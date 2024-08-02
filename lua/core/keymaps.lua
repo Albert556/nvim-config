@@ -8,8 +8,8 @@ map({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true
 map({ "n" }, "|", "<Cmd>vsplit<CR>", { desc = "Vertical Split" })
 map({ "n" }, "-", "<Cmd>split<CR>", { desc = "Horizontal Split" })
 
-map("n", "<Esc>", "<cmd>nohlsearch<CR><cmd>w<CR>", { desc = "Clear highlights And Save" })
-map("i", "<Esc>", "<Esc><cmd>nohlsearch<CR><cmd>w<CR>", { desc = "Esc, Clear highlights And Save" })
+map("n", "<Esc>", "<cmd>nohlsearch<CR><cmd>w<CR>", { silent = true, desc = "Clear highlights And Save" })
+map("i", "<Esc>", "<Esc><cmd>nohlsearch<CR><cmd>w<CR>", { silent = true, desc = "Esc, Clear highlights And Save" })
 
 map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
