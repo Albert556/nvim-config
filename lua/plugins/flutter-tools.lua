@@ -1,21 +1,20 @@
 return {
-  "akinsho/flutter-tools.nvim",
-  ft = "dart",
-  dependencies = { "nvim-lua/plenary.nvim" },
-  specs = {
-    -- Add "flutter" extension to "telescope"
-    {
-      "nvim-telescope/telescope.nvim",
-      optional = true,
-      opts = function()
-        require("telescope").load_extension("flutter")
-      end,
-    },
+  'nvim-flutter/flutter-tools.nvim',
+  ft = 'dart',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    'stevearc/dressing.nvim', -- optional for vim.ui.select
+    'nvim-telescope/telescope.nvim',
   },
   opts = {
-    lsp = {
-      on_attach = vim.g.lsp_attach,
+    decorations = {
+      device = true,
     },
-  }
+    fvm = true,
+  },
+  config = function(_, opts)
+    require('flutter-tools').setup(opts)
 
+    require('telescope').load_extension('flutter')
+  end,
 }
