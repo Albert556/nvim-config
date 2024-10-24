@@ -1,54 +1,106 @@
-local opt = vim.opt
+-- From  Kickstart.nvim
 
-opt.autowrite = true
-opt.backspace:append("nostop")
-opt.breakindent = true
-opt.clipboard = "unnamedplus"
-opt.completeopt = { "menu", "menuone",  "noinsert"}
-opt.confirm = true
-opt.cursorline = true
-opt.cursorlineopt = "line"
-opt.expandtab = true
-opt.foldcolumn = "1"
-opt.foldenable = true
-opt.foldlevel = 99
-opt.foldlevelstart = 99
-opt.hlsearch = true
-opt.ignorecase = true
-opt.inccommand = "split"
-opt.linebreak = true
-opt.list = true
-opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-opt.mouse = "a"
-opt.number = true
-opt.numberwidth = 2
-opt.pumheight = 10
-opt.relativenumber = true
-opt.scrolloff = 4
-opt.shiftwidth = 2
--- opt.shortmess = vim.tbl_deep_extend("force", vim.opt.shortmess:get(), { s = true, I = true })
-opt.showmode = false
-opt.sidescrolloff = 8
-opt.signcolumn = "yes"
-opt.smartcase = true
-opt.smartindent = true
-opt.smoothscroll = true
-opt.softtabstop = 2
-opt.splitbelow = true
-opt.splitright = true
-opt.tabstop = 2
--- opt.termguicolors = true
-opt.timeoutlen = 300
-opt.undofile = true
-opt.updatetime = 250
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- [[ Setting options ]]
+-- See `:help vim.opt`
+-- NOTE: You can change these options as you wish!
+--  For more options, you can see `:help option-list`
+
+-- Make line numbers default
+vim.opt.number = true
+-- You can also add relative line numbers, to help with jumping.
+--  Experiment for yourself to see if you like it!
+-- vim.opt.relativenumber = true
+
+-- Enable mouse mode, can be useful for resizing splits for example!
+vim.opt.mouse = "a"
+
+-- Don't show the mode, since it's already in the status line
+vim.opt.showmode = false
+
+-- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.schedule(function()
+	vim.opt.clipboard = "unnamedplus"
+end)
+
+-- Enable break indent
+vim.opt.breakindent = true
+
+-- 2 indent
+vim.opt.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 0
+vim.opt.shiftwidth = 0
+
+-- Save undo history
+vim.opt.undofile = true
+
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Keep signcolumn on by default
+vim.opt.signcolumn = "yes"
+
+-- Decrease update time
+vim.opt.updatetime = 250
+
+-- Decrease mapped sequence wait time
+-- Displays which-key popup sooner
+vim.opt.timeoutlen = 300
+
+-- Configure how new splits should be opened
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = "split"
+
+-- Show which line your cursor is on
+vim.opt.cursorline = true
+
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 10
+
+-- Sort wrap
+vim.opt.linebreak = true
+
+-- Fold
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = vim.treesitter.foldexpr()
+
+-- :help fo-table
+vim.opt.formatoptions:append("ro")
+
+-- completeopt
+-- TODO: error
+-- vim.opt.completeopt:append({ "fuzzy", "noinsert", "popup" })
 
 vim.g.userevent = { "BufWritePost", "BufNewFile", "BufReadPost" }
 
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.g.icons = {
-  diagnostics = {
-    Error = " ",
-    Warn  = " ",
-    Hint  = " ",
-    Info  = " ",
-  },
+	diagnostics = {
+		Error = " ",
+		Warn = " ",
+		Hint = " ",
+		Info = " ",
+	},
 }

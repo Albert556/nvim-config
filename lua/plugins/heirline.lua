@@ -14,10 +14,10 @@ return {
       opts = {
         disable_winbar_cb = function(args) -- We do this to avoid showing it on the greeter.
           local is_disabled = not require("heirline-components.buffer").is_valid(args.buf)
-            or lib.condition.buffer_matches({
-              buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
-              filetype = { "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
-            }, args.buf)
+              or lib.condition.buffer_matches({
+                buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
+                filetype = { "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
+              }, args.buf)
           return is_disabled
         end,
         colors = heirline_components.hl.get_colors()
