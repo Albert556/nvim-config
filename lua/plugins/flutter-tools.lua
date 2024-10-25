@@ -10,6 +10,7 @@ return {
     decorations = {
       device = true,
     },
+    flutter_path = '/Users/albert/fvm/default/bin/flutter',
     fvm = true,
   },
   config = function(_, opts)
