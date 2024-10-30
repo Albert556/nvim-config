@@ -70,11 +70,6 @@ return {
     },
 
     extensions_list = { 'themes', 'terms' },
-    pickers = {
-      find_files = {
-        theme = 'ivy',
-      },
-    },
     extensions = {
       ['ui-select'] = {
         require('telescope.themes').get_dropdown(),
