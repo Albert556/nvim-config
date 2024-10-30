@@ -87,6 +87,8 @@ vim.opt.formatoptions:append('ro')
 -- completeopt
 vim.opt.completeopt:append({ 'menu', 'menuone', 'noinsert', 'preview', 'popup' })
 
+vim.opt.laststatus = 3
+
 vim.g.userevent = { 'BufWritePost', 'BufNewFile', 'BufReadPost' }
 
 -- disable netrw at the very start of your init.lua

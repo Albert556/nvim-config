@@ -1,0 +1,34 @@
+  ~/.config/nvim
+    .git
+    lua
+   │  core                            
+   └  plugins
+     │  autopairs.lua
+     │  barbecue.lua                󰄱 
+     │  colorscheme.lua
+     │  comment.lua
+     │  fidget.lua
+     │  flash.lua
+     │  flutter-tools.lua
+     │  format.lua
+     │  gitsigns.lua
+     │  heirline.lua           [+]  󰄱 
+     │  indent-blankline.lua
+     │  lazydev.lua
+     │  lsp.lua
+     │  neo-tree.lua
+     │  nvim-cmp.lua
+     │  nvim-surround.lua
+     │  rustaceanvim.lua
+     │  telescope-file-browser.lua
+     │  telescope.lua
+     │  todo-comments.lua
+     │  treesitter.lua              󰄱 
+     └  which-key.lua
+     (1 hidden item)
+    .gitignore
+    README.md
+    init.lua
+    lazy-lock.json
+    stylua.toml
+   (1 hidden item)
