@@ -10,4 +10,14 @@ return {
       vim.cmd.colorscheme('gruvbox-material')
     end,
   },
+  {
+    'rcarriga/nvim-notify',
+    event = 'VeryLazy',
+    opts = {},
+    config = function(_, opts)
+      local notify = require('notify')
+      notify.setup(opts)
+      vim.notify = notify
+    end,
+  },
 }

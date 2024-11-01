@@ -37,6 +37,9 @@ require('lazy').setup({
   install = { colorscheme = { 'gruvbox-material' } },
   -- automatically check for plugin updates
   checker = { enabled = true, notify = false },
+  change_detection = {
+    enabled = false,
+  },
   icons = {
     ft = '',
     lazy = '󰂠 ',
