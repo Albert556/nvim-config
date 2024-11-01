@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd({ 'TextChanged', 'TextChangedI' }, {
       fn.timer_stop(save_delay_id)
       api.nvim_buf_set_var(buf, key, nil)
     end
-    local timer_id = fn.timer_start(1000, function()
+    local timer_id = fn.timer_start(500, function()
       api.nvim_buf_set_var(buf, key, nil)
       vim.api.nvim_buf_call(buf, function()
         if vim.api.nvim_buf_is_valid(buf) then vim.cmd('silent! write') end

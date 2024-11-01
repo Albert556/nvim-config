@@ -85,7 +85,7 @@ vim.opt.foldexpr = vim.treesitter.foldexpr()
 vim.opt.formatoptions:append('ro')
 
 -- completeopt
-vim.opt.completeopt:append({ 'menu', 'menuone', 'noinsert', 'preview', 'popup' })
+vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'preview', 'popup' }
 
 vim.opt.laststatus = 3
 
