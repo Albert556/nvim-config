@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd('InsertLeave', {
   callback = function() vim.o.relativenumber = false end,
 })
 
-vim.api.nvim_create_autocmd({ 'InsertLeave', 'TextChanged', 'TextChangedI' }, {
+vim.api.nvim_create_autocmd({ 'TextChanged', 'TextChangedI' }, {
   pattern = '*',
   group = vim.api.nvim_create_augroup('Autosave', { clear = true }),
   callback = function(ev)
